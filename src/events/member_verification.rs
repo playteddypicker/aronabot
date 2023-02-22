@@ -132,6 +132,7 @@ impl VerifyingMessageBuilder {
 
     fn welcome_message(&self) -> CreateMessage {
         CreateMessage::new()
+            .content(format!("<@{}>", &self.id))
             .embed(self.welcome_embed(0x1F80F8))
             .components(vec![CreateActionRow::Buttons(vec![CreateButton::new(
                 "verify",
