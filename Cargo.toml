@@ -1,0 +1,22 @@
+[package]
+name = "aronabot"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+twitter-stream = "0.13"
+dotenv = "0.15.0"
+log = "0.4.17"
+env_logger = "0.9.1"
+serde = "1"
+
+[dependencies.serenity]
+default-features = false
+features = ["builder", "chrono", "client", "cache", "gateway", "http", "model", "utils", "rustls_backend", "collector"]
+git = "https://github.com/serenity-rs/serenity"
+branch = "next"
+
