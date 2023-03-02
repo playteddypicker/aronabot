@@ -15,6 +15,7 @@ use std::num::NonZeroU64;
 use log::error;
 
 pub async fn notice(ctx: &Context, mut new_member: Member) {
+    if new_member.user.bot { return; }
     let system_channel = ChannelId::new(889812490538602506);
 
     let member_message = VerifyingMessageBuilder::new(
