@@ -13,10 +13,10 @@ dotenv = "0.15.0"
 log = "0.4.17"
 env_logger = "0.9.1"
 serde = "1"
+lazy_static = "1.4.0"
 
 [dependencies.serenity]
 default-features = false
 features = ["builder", "chrono", "client", "cache", "gateway", "http", "model", "utils", "rustls_backend", "collector"]
-git = "https://github.com/serenity-rs/serenity"
-branch = "next"
+version="0.12.0"
 

@@ -1,5 +1,5 @@
 use serenity::{
-    all::Member,
+    all::{Member, UserId},
     builder::{
         CreateActionRow, CreateButton, CreateEmbed, CreateEmbedAuthor,
         CreateInteractionResponseMessage, CreateMessage, EditMessage, CreateInteractionResponse
@@ -10,11 +10,10 @@ use serenity::{
 };
 
 use std::time::Duration;
-use std::num::NonZeroU64;
 
 use log::error;
 
-pub async fn notice(ctx: &Context, mut new_member: Member) {
+pub async fn notice(ctx: &Context, new_member: Member) {
     let system_channel = ChannelId::new(889812490538602506);
 
     let member_message = VerifyingMessageBuilder::new(
@@ -92,7 +91,7 @@ pub async fn notice(ctx: &Context, mut new_member: Member) {
 #[derive(Clone)]
 struct VerifyingMessageBuilder {
     tag: String,
-    id: NonZeroU64,
+    id: UserId,
     profile_url: String,
     guild_name: String,
 }
@@ -101,7 +100,7 @@ impl VerifyingMessageBuilder {
     fn new(new_member: &Member, gname: String) -> Self {
         Self {
             tag: new_member.user.tag(),
-            id: new_member.user.id.0,
+            id: new_member.user.id,
             profile_url: new_member.avatar_url().unwrap_or(
                 new_member.user.avatar_url().unwrap_or(
                     "https://i.pinimg.com/564x/7d/14/30/7d1430db3eb67d239f445af37991cc93.jpg"
